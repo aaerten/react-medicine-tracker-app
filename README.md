@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+![alt text](https://github.com/alperten/react-medicine-tracker-app/blob/main/ScreenShots/ss.png)
+![alt text](https://github.com/alperten/react-medicine-tracker-app/blob/main/ScreenShots/ss2.png)
+![alt text](https://github.com/alperten/react-medicine-tracker-app/blob/main/ScreenShots/ss3.png)
+![alt text](https://github.com/alperten/react-medicine-tracker-app/blob/main/ScreenShots/ss4.png)
+![alt text](https://github.com/alperten/react-medicine-tracker-app/blob/main/ScreenShots/ss5.png)
+![alt text](https://github.com/alperten/react-medicine-tracker-app/blob/main/ScreenShots/ss6.png)
