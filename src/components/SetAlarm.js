@@ -35,7 +35,6 @@ const SetAlarm = ({ medicine }) => {
 					if (currentTime.toLocaleTimeString('en-GB', {hour12: false }) === medicine_period && medicine_alarm==="On") {
 						window.alert("Time to take a Medicine");
 					} else {
-						console.log(currentTime.toLocaleTimeString('en-US', { hour12: false }));
 						console.log('not yet');
 					}
 		}
