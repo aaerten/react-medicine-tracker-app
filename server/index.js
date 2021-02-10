@@ -12,10 +12,10 @@ app.use(express.json());
 //create a data
 app.post("/medicines",async(req,res)=>{
     try{
-        const{medicine_status,medicine_name,medicine_period,medicine_type,medicine_eat_type} = req.body; 
+        const{medicine_status,medicine_name,medicine_period,medicine_type,medicine_eat_type,medicine_alarm} = req.body; 
         const newMedicine = await pool.query(
-			'INSERT INTO medicine(medicine_status,medicine_name,medicine_period,medicine_type,medicine_eat_type) VALUES ($1,$2,$3,$4,$5) RETURNING *',
-			[medicine_status, medicine_name, medicine_period, medicine_type, medicine_eat_type]
+			'INSERT INTO medicine(medicine_status,medicine_name,medicine_period,medicine_type,medicine_eat_type,medicine_alarm) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *',
+			[medicine_status, medicine_name, medicine_period, medicine_type, medicine_eat_type, medicine_alarm]
 		);
 
         res.json(newMedicine.rows[0]);
@@ -52,10 +52,10 @@ app.get('/medicines/:id', async (req, res) => {
 app.put('/medicines/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
-        const { medicine_status, medicine_name, medicine_period, medicine_type, medicine_eat_type }=req.body;
+        const { medicine_status, medicine_name, medicine_period, medicine_type, medicine_eat_type,medicine_alarm }=req.body;
 		const updateMedicine = await pool.query(
-			'UPDATE medicine SET medicine_status=$1, medicine_name=$2, medicine_period=$3, medicine_type=$4, medicine_eat_type=$5 WHERE medicine_id=$6',
-			[medicine_status, medicine_name, medicine_period, medicine_type, medicine_eat_type,id]
+			'UPDATE medicine SET medicine_status=$1, medicine_name=$2, medicine_period=$3, medicine_type=$4, medicine_eat_type=$5, medicine_alarm=$6 WHERE medicine_id=$7 ',
+			[medicine_status, medicine_name, medicine_period, medicine_type, medicine_eat_type,medicine_alarm, id]
 		);
 		res.json("Medicine was updated!");
 	} catch (err) {

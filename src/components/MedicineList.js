@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import EditMedicine from "./EditMedicine"
+import SetAlarm from "./SetAlarm"
 
 
 const MedicineList = () => {
@@ -38,41 +39,44 @@ const getMedicines = async ()=>{
 
     return (
 		<div>
-				<table className="table mt-5 text-center">
-					<thead>
-						<tr>
-							<th>Status</th>
-							<th>Medicine Name</th>
-							<th>Daily use</th>
-							<th>Type of Medicine</th>
-							<th>Before or After Eating</th>
-							<th>Edit</th>
-							<th>Delete</th>
+			<table className="table mt-5 text-center">
+				<thead>
+					<tr>
+						<th>Status</th>
+						<th>Medicine Name</th>
+						<th>Daily use</th>
+						<th>Type of Medicine</th>
+						<th>Before or After Eating</th>
+						<th>Alarm Status</th>
+						<th>Alarm</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					{medicines.map((medicine) => (
+						<tr key={medicine.medicine_id}>
+							<td>{medicine.medicine_status}</td>
+							<td>{medicine.medicine_name}</td>
+							<td>{medicine.medicine_period}</td>
+							<td>{medicine.medicine_type}</td>
+							<td>{medicine.medicine_eat_type}</td>
+							<td>{medicine.medicine_alarm}</td>
+							<td>
+								<SetAlarm medicine={medicine} />
+							</td>
+							<td>
+								<EditMedicine medicine={medicine} />
+							</td>
+							<td>
+								<button className="btn btn-danger" onClick={() => deleteMedicine(medicine.medicine_id)}>
+									Delete
+								</button>
+							</td>
 						</tr>
-					</thead>
-					<tbody>
-						{medicines.map((medicine) => (
-							<tr key={medicine.medicine_id}>
-								<td>{medicine.medicine_status}</td>
-								<td>{medicine.medicine_name}</td>
-								<td>{medicine.medicine_period}</td>
-								<td>{medicine.medicine_type}</td>
-								<td>{medicine.medicine_eat_type}</td>
-								<td>
-									<EditMedicine medicine={medicine} />
-								</td>
-								<td>
-									<button
-										className="btn btn-danger"
-										onClick={() => deleteMedicine(medicine.medicine_id)}
-									>
-										Delete
-									</button>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
+					))}
+				</tbody>
+			</table>
 		</div>
 	);
 }

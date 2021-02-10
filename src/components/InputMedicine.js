@@ -7,11 +7,12 @@ const InputMedicine = () => {
     const[medicine_period, setPeriod] = useState("");
     const[medicine_type, setType] = useState("");
     const[medicine_eat_type, setEatType] = useState("");
+	const [medicine_alarm, setAlarm] = useState("");
 
     const onSubmitForm = async e =>{
         e.preventDefault();
         try{
-            const body = {medicine_status, medicine_name, medicine_period, medicine_type, medicine_eat_type};
+            const body = {medicine_status, medicine_name, medicine_period, medicine_type, medicine_eat_type,medicine_alarm};
             const response = await fetch('http://localhost:5000/medicines', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -26,7 +27,13 @@ const InputMedicine = () => {
 
     return (
 		<>
-			<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#inputModal">
+			<button
+				type="button"
+				className="btn btn-primary"
+				data-toggle="modal"
+				data-target="#inputModal"
+				style={{ float: 'right' }}
+			>
 				ADD NEW MEDICINE
 			</button>
 
@@ -101,7 +108,20 @@ const InputMedicine = () => {
 										<option value="After">After</option>
 									</select>
 								</div>
-
+								<div className="form-group">
+									<label className="form-label">Alarm Status</label>
+									<select
+										className="form-select"
+										value={medicine_alarm}
+										onChange={(e) => setAlarm(e.target.value)}
+									>
+										<option value="" disabled>
+											Select the status of alarm
+										</option>
+										<option value="On">On</option>
+										<option value="Off">Off</option>
+									</select>
+								</div>
 								<button type="submit" className="btn btn-primary">
 									ADD MEDICINE
 								</button>
